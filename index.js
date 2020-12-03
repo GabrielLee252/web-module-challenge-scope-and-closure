@@ -28,9 +28,9 @@ console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
   Study the code for counter1 and counter2, then answer the questions below.
   
   1. What is the difference between counter1 and counter2?
-  
+  counter1 has the counter inside the scope, counter2 is outside of the scope
   2. Which of the two uses a closure? How can you tell?
-  
+  counter1 uses a closure because the count is inside the curley brackets
   3. In what scenario would the counter1 code be preferable? In what scenario would 
      counter2 be better?  
 */
@@ -62,8 +62,8 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
-    /*Code Here*/
+function inning(min, max){
+    return Math.round(Math.random() * 2);
 }
 
 
@@ -81,9 +81,18 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(/*code Here*/){
-  /*Code Here*/
+function finalScore(inning, numOfInnings ){
+  let homeTeam = 0;
+  let awayTeam = 0;
+  for( let i = 0; i < numOfInnings; i++){
+    homeTeam = numOfInnings + inning;
+    awayTeam = numOfInnings + inning;
+  }
+
+console.log('home: ${homeTeam} away: ${awayTeam}')
+
 }
+console.log(finalScore(inning(0,3), 9))
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
@@ -136,9 +145,30 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(cbInning, inningNum) {
+  let score = [];
+  let homeTeam = 0;
+  let awayTeam = 0;
+  for(let i = 0; i < inningNum ; i++){
+
+
+    let home = inningNum+cbInning;
+    let away = inningNum +cbInning;
+
+    homeTeam += home;
+    awayTeam += away;
+
+    score.push('Inning'+ i + ':' + away + '-' + home)
+
+  }
+
+  score.push('Total Score :'+ `${homeTeam}` + '-' + `${awayTeam}`)
+
+  return score;
 }
+
+console.log(scoreboard(inning(0,2), 9));
+
 
 
 
